@@ -12,4 +12,19 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\API\" />
+    <Folder Include="Models\DonateStore\" />
+    <Folder Include="Models\Home\" />
+    <Folder Include="Models\News\" />
+    <Folder Include="Models\Rules\" />
+    <Folder Include="Models\Trade\" />
+    <Folder Include="Models\Wiki\" />
+    <Folder Include="Views\DonateStore\" />
+    <Folder Include="Views\News\" />
+    <Folder Include="Views\Rules\" />
+    <Folder Include="Views\Trade\" />
+    <Folder Include="Views\Wiki\" />
+  </ItemGroup>
+
 </Project>

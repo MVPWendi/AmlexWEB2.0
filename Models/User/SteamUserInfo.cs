@@ -1,4 +1,4 @@
-﻿namespace AmlexWEB.Models
+﻿namespace AmlexWEB.Models.User
 {
     public class Player
     {

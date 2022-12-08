@@ -1,4 +1,4 @@
-﻿using AmlexWEB.Models;
+﻿using AmlexWEB.Models.User;
 using System.ComponentModel;
 
 namespace AmlexWEB.Services
