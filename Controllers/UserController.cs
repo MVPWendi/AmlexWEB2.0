@@ -1,4 +1,4 @@
-﻿using AmlexWEB.Models;
+﻿using AmlexWEB.Models.User;
 using AmlexWEB.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

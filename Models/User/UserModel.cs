@@ -2,14 +2,14 @@
 using Newtonsoft.Json;
 using System.Security.Claims;
 
-namespace AmlexWEB.Models
+namespace AmlexWEB.Models.User
 {
     public class UserModel : UserDto
     {
         private readonly DatabaseUsers _Db;
         private readonly ILogger<UserModel> _logger;
         public UserModel(DatabaseUsers db, ILogger<UserModel> logger)
-        {            
+        {
             _Db = db;
             _logger = logger;
         }
@@ -26,7 +26,7 @@ namespace AmlexWEB.Models
                     var SteamInfo = response.Content.ReadAsStringAsync().Result;
                     var info = JsonConvert.DeserializeObject<Root>(SteamInfo);
                     _Db.CreateUser(SteamID, info.response.players[0].personaname);
-                   
+
                 }
                 catch (Exception ex)
                 {
