@@ -10,14 +10,17 @@ namespace AmlexWEB.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly DatabaseUsers _DB;
-        public HomeController(ILogger<HomeController> logger, DatabaseUsers db)
+        private readonly ServerMonitoring _monitoring;
+        public HomeController(ILogger<HomeController> logger, DatabaseUsers db, ServerMonitoring monitoring)
         {
             _logger = logger;
             _DB = db;
+            _monitoring = monitoring;
         }
 
         public IActionResult Index()
         {
+            ViewBag.Server = _monitoring.Servers.ElementAt(0);
             return View();
         }
         public IActionResult Privacy()

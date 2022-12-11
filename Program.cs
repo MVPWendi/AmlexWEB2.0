@@ -14,7 +14,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     options.LogoutPath = "/Auth/SignOutUser";
 });
 builder.Services.AddSingleton<DatabaseUsers>();
-builder.Services.AddSingleton<UserModel>();
+builder.Services.AddTransient<UserModel>();
+builder.Services.AddSingleton<ServerMonitoring>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,5 +39,4 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.Run();
