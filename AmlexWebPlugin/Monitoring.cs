@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SDG.Unturned;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,18 +11,17 @@ using System.Threading.Tasks;
 
 namespace AmlexWebPlugin
 {
-    public class Monitoring
+    public static class Monitoring
     {
-
         public static string SendRequestJson(string methodName, object content)
         {
             // Сериализуем в JSON то что отправляем
             var stringPayload = JsonConvert.SerializeObject(content);
 
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create($"https://localhost:7264/api/{methodName}");
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create($"{Plugin.Instance.Configuration.Instance.WebAddress}/{methodName}");
             req.ContentType = "application/json";
             req.Method = "POST";
-            req.Headers.Add("Authorization", $"Basic Amlex:123456q");
+            req.Headers.Add("Authorization", $"Basic {Plugin.Instance.Configuration.Instance.BasicAuth}");
             using (var streamWriter = new StreamWriter(req.GetRequestStream()))
             {
                 streamWriter.Write(stringPayload);
@@ -53,6 +53,19 @@ namespace AmlexWebPlugin
                     }
                 }
             }
+        }
+        public static Server GetServerInfo()
+        {
+            return new Server
+            {
+                CurrentPlayers = Provider.clients.Count(),
+                MaxPlayers = Provider.maxPlayers,
+                Enabled = true,
+                IP = Plugin.Instance.Configuration.Instance.IP,
+                Port = Provider.port.ToString(),
+                Name = Plugin.Instance.Configuration.Instance.ServerName,
+                Players = new List<UserMonitoring>()
+            };
         }
     }
 }

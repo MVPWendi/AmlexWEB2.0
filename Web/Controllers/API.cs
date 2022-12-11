@@ -1,4 +1,5 @@
 ﻿using AmlexWEB.Models;
+using AmlexWEB.Models.User;
 using AmlexWEB.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -30,6 +31,15 @@ namespace AmlexWEB.Controllers
             _logger.LogInformation(JsonConvert.SerializeObject(server));
             if (server == null) return BadRequest();
             _monitoring.UpdateServerInfo(server);
+            return Ok();
+        }
+
+        [HttpPost]
+        [ActionName("connect")]
+        public IActionResult ConnectPlayer([FromBody] UserMonitoring player)
+        {
+            if (player == null) return BadRequest();
+            _monitoring.UpdateServerPlayer(player);
             return Ok();
         }
     }

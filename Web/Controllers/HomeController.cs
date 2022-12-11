@@ -20,8 +20,7 @@ namespace AmlexWEB.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Server = _monitoring.Servers.ElementAt(0);
-            return View();
+            return View(_monitoring.Servers.ElementAt(0));
         }
         public IActionResult Privacy()
         {

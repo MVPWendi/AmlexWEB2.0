@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using AmlexWEB.Models
+@using System.Collections.Generic
+@model Server
 <div class="text-center">
     <div>
         @if (User?.Identity?.IsAuthenticated == false)
@@ -18,6 +21,10 @@
                 <button class="btn btn-lg btn-success m-1" type="submit">Logout</button>
             </form>
         }
-        <h1>@ViewBag.Server.Name | @ViewBag.Server.Enabled | @ViewBag.Server.CurrentPlayers</h1>
+        <h1>@Model.Name | @Model.Enabled | @Model.CurrentPlayers</h1>
+        @foreach (var player in Model.Players)
+        {
+            <p>@player.UserName | @player.ConnectTime | @player.SteamID</p>
+        }
     </div>
 </div>

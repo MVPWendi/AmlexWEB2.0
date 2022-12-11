@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AmlexWebPlugin
 {
@@ -12,5 +13,7 @@ namespace AmlexWebPlugin
         public string Port { get; set; }
         public bool Enabled { get; set; }
         public int CurrentPlayers { get; set; }
+
+        public IEnumerable<UserMonitoring> Players { get; set; }
     }
 }

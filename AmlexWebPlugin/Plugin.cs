@@ -1,4 +1,7 @@
 ﻿using Rocket.Core.Plugins;
+using Rocket.Unturned;
+using Rocket.Unturned.Player;
+using SDG.Unturned;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,34 +14,22 @@ namespace AmlexWebPlugin
     public class Plugin : RocketPlugin<Configuration>
     {
         public static Plugin Instance;
-        private Monitoring Monitoring;
         protected override void Load()
         {
             Instance = this;
-            Monitoring = new Monitoring();
-            Monitoring.SendRequestJson("update", new Server
-            {
-                MaxPlayers = 24,
-                CurrentPlayers = 0,
-                Enabled = true,
-                IP = "127.0.0.1",
-                Name = "Test",
-                Port = "27015"
-            });
+            Monitoring.SendRequestJson("update", Monitoring.GetServerInfo());
         }
 
         protected override void Unload()
         {
-            Monitoring.SendRequestJson("update", new Server
-            {
-                MaxPlayers = 24,
-                CurrentPlayers = 0,
-                Enabled = false,
-                IP = "127.0.0.1",
-                Name = "Test",
-                Port = "27015"
-            });
+            var server = Monitoring.GetServerInfo();
+            server.Enabled = false;
+            var a = 2;
+            Monitoring.SendRequestJson("update", server);
             Instance = null;
         }
+
+
+        
     }
 }
