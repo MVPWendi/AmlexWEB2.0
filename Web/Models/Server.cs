@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using AmlexWEB.Models.User;
+using System.Diagnostics;
 
 namespace AmlexWEB.Models
 {
@@ -12,5 +13,6 @@ namespace AmlexWEB.Models
         public string Port { get; set; }
         public bool Enabled { get; set; }
         public int CurrentPlayers { get; set; }
+        public IEnumerable<UserMonitoring> Players { get; set; }
     }
 }
