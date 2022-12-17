@@ -1,11 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@using AmlexWEB.Models
-@using System.Collections.Generic
-@model Server
+@using AmlexWEB.Models.Rules
+@model RulesModel
 <div class="text-center">
     <div>
         <p>правила</p>
+        @foreach (var sect in Model.RuleSections)
+        {
+            <h1>@sect.Name</h1>
+            @foreach (var rule in sect.Rules)
+            {
+                <p>@rule.Text</p>
+            }
+        }
     </div>
 </div>

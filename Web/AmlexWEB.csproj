@@ -18,7 +18,6 @@
     <Folder Include="Models\DonateStore\" />
     <Folder Include="Models\Home\" />
     <Folder Include="Models\News\" />
-    <Folder Include="Models\Rules\" />
     <Folder Include="Models\Trade\" />
     <Folder Include="Models\Wiki\" />
     <Folder Include="Views\DonateStore\" />
